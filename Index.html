@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Bubble Sort Animator</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Bubble Sort Animator</h1>
+    <div class="controls">
+      <div class="form-group">
+        <label for="arrayInput">Enter Array Elements (comma separated):</label>
+        <input type="text" id="arrayInput" placeholder="e.g. 34,7,23,32" />
+      </div>
+      <div class="form-group">
+        <label for="speedRange">Animation Speed (ms):</label>
+        <input type="range" id="speedRange" min="50" max="1000" value="300" />
+        <span id="speedDisplay">300</span> ms
+      </div>
+      <div class="buttons">
+        <button id="generateBtn">Generate Array</button>
+        <button id="startBtn" disabled>Start Animation</button>
+      </div>
+    </div>
+    <div id="array-container"></div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

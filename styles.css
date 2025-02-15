@@ -1,0 +1,113 @@
+/* Global Styles */
+body {
+    margin: 0;
+    padding: 0;
+    background: #000000; /* Main color: black */
+    font-family: 'Arial', sans-serif;
+    color: #ffffff;
+  }
+  
+  /* Main Container */
+  .container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+    background: #000000; /* Keep container black */
+  }
+  
+  /* Page Title */
+  h1 {
+    margin-bottom: 20px;
+    font-size: 2em;
+    color: #ffffff;
+  }
+  
+  /* Controls Section */
+  .controls {
+    background: #0d0d0d; /* Very dark grey for subtle differentiation */
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  
+  /* Form Groups & Labels */
+  .form-group {
+    margin: 15px 0;
+    text-align: left;
+  }
+  
+  .form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #ffffff;
+  }
+  
+  .form-group input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    font-size: 1em;
+    border: 1px solid #333333;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    background: #000000;
+    color: #ffffff;
+  }
+  
+  /* Range Slider */
+  .form-group input[type="range"] {
+    width: 80%;
+    vertical-align: middle;
+  }
+  
+  #speedDisplay {
+    font-weight: bold;
+    margin-left: 5px;
+  }
+  
+  /* Buttons */
+  .buttons {
+    margin-top: 15px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    font-size: 1em;
+    margin: 10px 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background: #ffd1dc; /* Pastel pink accent */
+    color: #000000;      /* Black text */
+    transition: background 0.3s ease;
+  }
+  
+  button:hover {
+    background: #ffc0cb; /* Lighter pastel pink on hover */
+  }
+  
+  /* Array Container for Bars */
+  #array-container {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    height: 300px; /* Chart height */
+    margin: 20px auto;
+    width: 100%;
+    border: 2px solid #333333;
+    border-radius: 8px;
+    background: #000000; /* Black background */
+    padding: 10px;
+    box-sizing: border-box;
+    overflow: hidden; /* Keep bars inside the container */
+  }
+  
+  /* Individual Bars */
+  .bar {
+    background: #c1f4c5; /* Pastel green accent */
+    margin: 0 2px;
+    width: 20px;
+    transition: height 0.3s ease, background-color 0.3s ease;
+  }
+  
