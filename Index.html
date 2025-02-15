@@ -1,30 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Bubble Sort Animator</title>
-  <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bubble Sort Animator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #000;
+            color: #F5EFE7;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #D8C4B6;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        input {
+            background: #3E5879;
+            color: white;
+        }
+
+        button {
+            background: #D8C4B6;
+            color: #000;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #F5EFE7;
+        }
+
+        .bar-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            height: 250px;
+            margin-top: 20px;
+            border-bottom: 2px solid #F5EFE7;
+        }
+
+        .bar {
+            width: 30px;
+            margin: 2px;
+            background: #3E5879;
+            transition: height 0.3s ease-in-out;
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
+
     <h1>Bubble Sort Animator</h1>
-    <div class="controls">
-      <div class="form-group">
-        <label for="arrayInput">Enter Array Elements (comma separated):</label>
-        <input type="text" id="arrayInput" placeholder="e.g. 34,7,23,32" />
-      </div>
-      <div class="form-group">
-        <label for="speedRange">Animation Speed (ms):</label>
-        <input type="range" id="speedRange" min="50" max="1000" value="300" />
-        <span id="speedDisplay">300</span> ms
-      </div>
-      <div class="buttons">
-        <button id="generateBtn">Generate Array</button>
-        <button id="startBtn" disabled>Start Animation</button>
-      </div>
+    
+    <div class="container">
+        <input type="text" id="arrayInput" placeholder="Enter numbers (comma-separated)">
+        <button onclick="generateArray()">Generate Array</button>
+        <button onclick="startSorting()">Start Sorting</button>
+
+        <div class="bar-container" id="barContainer"></div>
     </div>
-    <div id="array-container"></div>
-  </div>
-  <script src="script.js"></script>
+
+    <script>
+        let values = [];
+
+        function generateArray() {
+            const input = document.getElementById("arrayInput").value;
+            values = input.split(",").map(num => parseInt(num.trim())).filter(num => !isNaN(num));
+            renderBars();
+        }
+
+        function renderBars() {
+            const container = document.getElementById("barContainer");
+            container.innerHTML = "";
+            values.forEach(value => {
+                const bar = document.createElement("div");
+                bar.classList.add("bar");
+                bar.style.height = `${value * 3}px`;
+                container.appendChild(bar);
+            });
+        }
+
+        async function startSorting() {
+            let bars = document.querySelectorAll(".bar");
+            for (let i = 0; i < values.length - 1; i++) {
+                for (let j = 0; j < values.length - i - 1; j++) {
+                    bars[j].style.background = "#D8C4B6";
+                    bars[j + 1].style.background = "#D8C4B6";
+                    await new Promise(resolve => setTimeout(resolve, 300));
+
+                    if (values[j] > values[j + 1]) {
+                        [values[j], values[j + 1]] = [values[j + 1], values[j]];
+                        renderBars();
+                        bars = document.querySelectorAll(".bar");
+                    }
+
+                    bars[j].style.background = "#3E5879";
+                    bars[j + 1].style.background = "#3E5879";
+                }
+            }
+        }
+    </script>
+
 </body>
 </html>
